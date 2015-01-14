@@ -1,5 +1,3 @@
-# interview_questions
-
 ## LeetCode
 
 * Majority Element
