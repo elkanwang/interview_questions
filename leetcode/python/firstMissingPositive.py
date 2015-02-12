@@ -21,6 +21,24 @@ class Solution:
         		return i + 1
         return maximum+1
 
+    def firstMissingPositiveImproved(self, A):
+        if A == []:
+            return 1
+        length = len(A)
+        # pass 1
+        for i in range(length):
+            item = A[i]
+            while item<=length and item>0 and A[item - 1] != item:
+                temp = A[item-1]
+                A[item-1] = A[i]
+                A[i] = temp
+                item = A[i]
+        for i in range(length):
+            if A[i] != i+1:
+                return i+1
+        return length+1
+
+
 sol = Solution()
-A = [4,-1,1]
-print sol.firstMissingPositive(A)
+A = [3,4,-1,1]
+print sol.firstMissingPositiveImproved(A)
