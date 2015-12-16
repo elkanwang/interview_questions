@@ -31,14 +31,27 @@ def doWeShare(word1, word2):
     return True
 
 
+# def maxProduct(words):
+#     wordsLength = len(words)
+#     tempRes = 0
+#     for i in range(wordsLength):
+#         for j in range(i, wordsLength):
+#             if doWeShare(words[i], words[j]):
+#                 tempRes = max(len(words[i]) * len(words[j]), tempRes)
+#     return tempRes
+
 def maxProduct(words):
+    res = 0
     wordsLength = len(words)
-    tempRes = 0
+    newArr = [0] * wordsLength
+    for i in range(wordsLength):
+        for char in words[i]:
+            newArr[i] = newArr[i] | 1 << (ord(char) - ord('a')) ## 把字母相对应的1-26个位置set成1
     for i in range(wordsLength):
         for j in range(i, wordsLength):
-            if doWeShare(words[i], words[j]):
-                tempRes = max(len(words[i]) * len(words[j]), tempRes)
-    return tempRes
+            if (newArr[i] & newArr[j] == 0):
+                res = max(len(words[i]) * len(words[j]), res)
+    return res
 
 
 sample1 = ["a", "ab", "abc", "d", "cd", "bcd", "abcd"]
