@@ -60,17 +60,18 @@ class Solution():
     def replaceSpace2(self, s):
         pass
 
-# q5.
+# q5. basic string compression, if the compressed string is longer than the
+#       original string, return the original string
+#       assume there's only upper case and small case letters
+#       e.g. aabcccccaaa -> a2b1c5a3
 
-# q6
+# q6. M*N matrix, each entry is 4 bytes, rotate the matrix by 90 degree
 
-# q7
+# q7. if an element in M*N is 0, its entire row and column are set to 0
 
-# q8
-
-# q9
-
-# q10.
+# q8. assume having a function called isSubString. Given two strings, check if
+#       s2 is a rotation of s1.
+#       e.g. 'waterbottle' is a rotation of 'erbottlewat'
 
 
 class Test(unittest.TestCase):
