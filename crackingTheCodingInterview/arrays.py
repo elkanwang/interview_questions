@@ -66,12 +66,62 @@ class Solution():
 #       e.g. aabcccccaaa -> a2b1c5a3
 
 # q6. M*N matrix, each entry is 4 bytes, rotate the matrix by 90 degree
+    def swapMatrix(self, matrix, res, n, i, j):
+        '''
+        helper function to swap two entries in the matrix
+        '''
+        temp = matrix[i][j]
+        matrix[i][j] = matrix[j][n-i-1]
+        matrix[j][n-i+1] = temp
+
+    def rotateMtrix(self, matrix):
+        '''
+        the solution of the question is quite simple, the trick
+        is to find the correct formula for rotating the matrix.
+        That is:
+        for i representing the row number
+        and j representing the column number
+        maxtrix[i][j] = matrix[j][n-i-1]
+        we just need a helper function to swap this two entry
+        '''
+        dimension = len(matrix)
+        res = matrix[:][:]
+        for i in range(dimension):
+            for j in range(dimension):
+                res[j][dimension-i+1] = matrix[i][j]
+        return res
 
 # q7. if an element in M*N is 0, its entire row and column are set to 0
 
 # q8. assume having a function called isSubString. Given two strings, check if
 #       s2 is a rotation of s1.
 #       e.g. 'waterbottle' is a rotation of 'erbottlewat'
+
+    def isRotatedString(self, s1, s2):
+        '''
+        The straight forward solution to this problem is brute force.
+        traverse the entire s1 and constantly making the new string
+        check if they are the same string
+        '''
+        len1 = len(s1)
+        len2 = len(s2)
+        if len1 != len2:
+            return False
+        for index in range(len1):
+            tempS = s1[index:] + s1[:index]
+            if tempS == s2:
+                return True
+            else:
+                continue
+        return False
+
+    def isRotatedStringImproved(self, s1, s2):
+        len1 = len(s1)
+        len2 = len(s2)
+        if len1 != len2:
+            return False
+        s1 = s1 + s1
+        return s2 in s1
 
 
 class Test(unittest.TestCase):
@@ -96,6 +146,19 @@ class Test(unittest.TestCase):
 
     def test5(self):
         self.assertEqual(Solution().replaceSpace('a a'), 'a%20a')
+
+    def test6(self):
+        self.assertEqual(Solution().isRotatedStringImproved('watermelon', 'melonwater'), True)
+
+    def test7(self):
+        self.assertEqual(Solution().isRotatedStringImproved('watermelon', 'water'), False)
+
+    def test8(self):
+        self.assertEqual(Solution().isRotatedString('watermelon', 'melonwater'), True)
+
+    def test9(self):
+        self.assertEqual(Solution().isRotatedString('watermelon', 'water'), False)
+
 
 if __name__ == '__main__':
     unittest.main()

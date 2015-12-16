@@ -17,6 +17,7 @@ def waysRunningUpStairsDP(n, array):
 		return 1
 	else:
 		if array[n] != 0:
+			print array[n]
 			return array[n]
 		else:
 			array[n] = waysRunningUpStairsDP(n-1,array)+waysRunningUpStairsDP(n-2,array)+waysRunningUpStairsDP(n-3,array)
