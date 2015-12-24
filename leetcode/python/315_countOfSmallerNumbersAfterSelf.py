@@ -1,5 +1,7 @@
 '''
-You are given an integer array nums and you have to return a new counts array. The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
+You are given an integer array nums and you have to return a new counts array.
+The counts array has the property where counts[i] is the number of smaller
+elements to the right of nums[i].
 
 Example:
 
@@ -13,3 +15,10 @@ To the right of 1 there is 0 smaller element.
 Return the array [2, 1, 1, 0].
 
 '''
+
+
+def countSmaller(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: List[int]
+    """
