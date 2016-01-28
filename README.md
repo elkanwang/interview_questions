@@ -1,10 +1,7 @@
 ## LeetCode
 
-* Majority Element
-* Largest Number
-* Factorial Trailing Zeroes
+[Great Solutions](https://www.hrwhisper.me/leetcode-algorithm-solution/)
 
-## interviews got from actual interviews
+## Actual interview questions
 
-## how to crash coding interviews
-
+## How to crack coding interviews

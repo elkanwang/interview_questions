@@ -1,4 +1,5 @@
 .idea
 *.swp
 *.swo
+*.DS_Store
 leetcode/python/.ropeproject
