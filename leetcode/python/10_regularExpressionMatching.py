@@ -41,4 +41,25 @@ class Solution(object):
         """
         if not p:
             return not s
-        
+        print p, s
+        if p[-1] == "*":
+            if self.isMatch(s,p[:-2]):
+                return True
+            if s and (s[-1]==p[-2] or p[-2]=="."):
+                return self.isMatch(s[:-1], p)
+        else:
+            if s and (s[-1]==p[-1] or p[-1]=="."):
+                return self.isMatch(s[:-1], p[:-1])
+            else:
+                return False
+        return False
+
+sol = Solution()
+print sol.isMatch("aa","a") #→ false
+print sol.isMatch("aa","aa*aa") #→ true
+print sol.isMatch("aaa","aa")# → false
+print sol.isMatch("aa", "a*") #→ true
+print sol.isMatch("aa", ".*") #→ true
+print sol.isMatch("ab", ".*") #→ true
+print sol.isMatch("aab", "c*a*b") #→ true
+print sol.isMatch("aab", "b.*") #→ true
