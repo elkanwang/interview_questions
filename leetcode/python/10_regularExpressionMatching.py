@@ -41,7 +41,6 @@ class Solution(object):
         """
         if not p:
             return not s
-        print p, s
         if p[-1] == "*":
             if self.isMatch(s,p[:-2]):
                 return True
