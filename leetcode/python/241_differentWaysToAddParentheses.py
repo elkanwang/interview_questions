@@ -30,3 +30,5 @@ class Solution(object):
         :type input: str
         :rtype: List[int]
         """
+        def helper(l,r):
+
