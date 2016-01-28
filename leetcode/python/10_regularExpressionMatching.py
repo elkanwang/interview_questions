@@ -21,9 +21,24 @@ isMatch("aab", "c*a*b") → true
 '''
 
 class Solution(object):
+    '''
+    题意：’.’表示可以代替任何字符，’*’表示可以代替前面一个出现的字符，且可以代表任意个，
+    给定字符串s和p，问s和p是否匹配。
+    aab和c*a*b为true时因为，p中第一个*代替0个c，第二个*代替两个a，于是可以变为aab，
+    和s相同，所以为true
+    If the next character of p is NOT ‘*’, then it must match the current
+    character of s. Continue pattern matching with the next character of both
+    s and p.
+    If the next character of p is ‘*’, then we do a brute force exhaustive
+    matching of 0, 1, or more repeats of current character of p… Until we
+    could not match any more characters.
+    '''
     def isMatch(self, s, p):
         """
         :type s: str
         :type p: str
         :rtype: bool
         """
+        if not p:
+            return not s
+        
