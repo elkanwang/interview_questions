@@ -7,7 +7,8 @@ You may assume that each input would have exactly one solution.
 
     The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 '''
-
+import sys
+import math
 class Solution(object):
     def threeSumClosest(self, nums, target):
         """
@@ -15,3 +16,26 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
+        n = len(nums)
+        if n<=3:
+            return sum(nums)
+        nums = sorted(nums)
+        mindiff = sys.maxint
+        for i in range(n-2):
+            left,right = i+1, n-1
+            while (left < right):
+                diff = nums[left] + nums[i] + nums[right] - target
+                print i, left, right, diff
+                if abs(diff) < abs(mindiff):
+                    mindiff = diff
+                if diff == 0:
+                    return target
+                    # break
+                elif diff < 0:
+                    left += 1
+                else:
+                    right -=1
+        return target + mindiff
+
+sol = Solution()
+print sol.threeSumClosest([-1, 2, 1, -4],1)
