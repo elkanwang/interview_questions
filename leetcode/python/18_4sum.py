@@ -22,4 +22,24 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        
+        res = set()
+        nums = sorted(nums)
+        n = len(nums)
+        if n<4:
+            return []
+        for i in xrange(n-3)
+            for j in xrange(a+1,n-2):
+                t = target - nums[i] - nums[j]
+                left = j+1
+                right = n-1
+                if nums[left] + nums[right] == t:
+                    res.add((nums[i],nums[j],nums[left],nums[right]))
+                for j in xrange(i+1,n-1):
+                    target = 0-nums[i]-nums[j]-nums
+                partial = nums[j+1:]
+                if target in partial:
+                    index = partial.index(target)
+                    res.add((nums[i],nums[j],nums[j+1+index]))
+                else:
+                    continue
+        return map(lambda x:list(x),res)
