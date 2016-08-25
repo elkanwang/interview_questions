@@ -13,3 +13,9 @@ class Solution(object):
             else:
                 l -= 1
                 nums[i] = temp[l]
+
+
+
+
+
+

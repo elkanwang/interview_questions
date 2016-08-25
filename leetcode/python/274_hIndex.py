@@ -2,9 +2,6 @@
 Given an array of citations (each citation is a non-negative integer) of a
 researcher, write a function to compute the researcher's h-index.
 
-According to the definition of h-index on Wikipedia: "A scientist has index h
-if h of his/her N papers have at least h citations each, and the other N − h
-papers have no more than h citations each."
 
 For example, given citations = [3, 0, 6, 1, 5], which means the researcher has
 5 papers in total and each of them had received 3, 0, 6, 1, 5 citations
@@ -28,3 +25,20 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
+        if not citations:
+            return 0
+        citations = sorted(citations)
+        for i in reversed(range(0, len(citations)+1)):
+            print(i, citations[-i], citations[-i], citations)
+            if citations[-i] >= i:
+                if len(citations) - i == 0:
+                    return i
+                if citations[-i-1] <= i:
+                    return i
+        return 0
+sol = Solution()
+
+print(sol.hIndex([3, 0, 6, 1, 5]))
+print(sol.hIndex([5, 5, 6, 6, 5]))
+print(sol.hIndex([]))
+print(sol.hIndex([1, 1]))
