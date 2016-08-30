@@ -76,12 +76,54 @@ class Solution(object):
                     board[i][j] = 3
                 if (board[i][j] & 1 == 0 and lives == 3):
                     board[i][j] = 2
-        print board
+        # print board
         for i in range(row):
             for j in range(column):
                 board[i][j] >>= 1
 
+
+class Solution(object):
+    def gameOfLife(self, board):
+        """
+        :type board: List[List[int]]
+        :rtype: void Do not return anything, modify board in-place instead.
+        """
+
+        def helper(board, i, j, m, n):
+            live_neighbour = 0
+            current_status = board[i][j] >> 1
+            for (x, y) in [(-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)]:
+                new_x, new_y = i + x, j + y
+                # print new_x, new_y, board[new_x][new_y] >> 1
+                if 0 <= new_x < m and 0 <= new_y < n and (board[new_x][new_y] >> 1 == 1):
+                    live_neighbour += 1
+            # print live_neighbour
+            if current_status == 1:
+                if live_neighbour in [2, 3]:
+                    board[i][j] += 1
+            else:
+                if live_neighbour == 3:
+                    board[i][j] += 1
+                    # print 'becomes live', board[i][j]
+
+        if not board or not board[0]:
+            return board
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                board[i][j] *= 2
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                helper(board, i, j, len(board), len(board[0]))
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                board[i][j] &= 1
+
+        # print board
+
 sol = Solution()
 board =[[1,1],[1,0]]
 sol.gameOfLife(board)
+print board
+board =[[1,1],[1,0]]
+sol.gameOfLife2(board)
 print board
