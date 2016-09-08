@@ -24,11 +24,11 @@ Output: [-34, -14, -10, -10, 10]
 '''
 
 
-class Solution(object):
-    def diffWaysToCompute(self, input):
-        """
-        :type input: str
-        :rtype: List[int]
-        """
-        def helper(l,r):
+# class Solution(object):
+#     def diffWaysToCompute(self, input):
+#         """
+#         :type input: str
+#         :rtype: List[int]
+#         """
+#         def helper(l,r):
 
