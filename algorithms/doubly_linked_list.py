@@ -5,6 +5,9 @@ class Node(object):
         self.prev = None
         self.next = None
 
+    def __repr__(self):
+        return 'tail: ' + str(self.data)
+
 class DoublyLinkedList(object):
 
     def __init__(self):
@@ -39,7 +42,8 @@ class DoublyLinkedList(object):
                     self.head = cur_node.next
                 if cur_node.next is not None:
                     cur_node.next.prev = cur_node.prev
-                self.tail = cur_node.prev
+                else:
+                    self.tail = cur_node.prev
             cur_node = cur_node.next
 
 ll = DoublyLinkedList()
@@ -48,9 +52,12 @@ ll.append(3)
 ll.append(2)
 ll.append(1)
 ll.show()
+print ll.tail
 ll.remove(3)
 ll.show()
+print ll.tail
 ll.remove(1)
 ll.show()
+print ll.tail
 ll.remove(5)
 ll.show()
