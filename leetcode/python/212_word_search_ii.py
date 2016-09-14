@@ -1,4 +1,7 @@
 class Solution(object):
+
+    # need to build a trie
+
     def findWords(self, board, words):
         """
         :type board: List[List[str]]
@@ -18,29 +21,29 @@ class Solution(object):
         :param word:
         :return:
         """
-        def helper(board, mark_board, x, y, word):
-            if not word:
+        def helper(board, mark_board, x, y, word, word_index):
+            if word_index == len(word):
                 return True
             if mark_board[x][y] == 1:
                 return False
-            if board[x][y] == word[0]:
+            if board[x][y] == word[word_index]:
                 mark_board[x][y] = 1
                 if len(word) == 1:
                     return True
                 if x - 1 >= 0:
-                    res = helper(board, mark_board, x-1, y, word[1:])
+                    res = helper(board, mark_board, x-1, y, word, word_index+1)
                     if res:
                         return True
                 if x + 1 < len(mark_board):
-                    res = helper(board, mark_board, x+1, y, word[1:])
+                    res = helper(board, mark_board, x+1, y, word, word_index+1)
                     if res:
                         return True
                 if y - 1 >= 0:
-                    res = helper(board, mark_board, x, y-1, word[1:])
+                    res = helper(board, mark_board, x, y-1, word, word_index+1)
                     if res:
                         return True
                 if y + 1 < len(board[0]):
-                    res = helper(board, mark_board, x, y+1, word[1:])
+                    res = helper(board, mark_board, x, y+1, word, word_index+1)
                     if res:
                         return True
                 mark_board[x][y] = 0
@@ -54,7 +57,7 @@ class Solution(object):
             for j in range(len(board[0])):
                 # print i, j
                 if board[i][j] == word[0]:
-                    if helper(board, mark_board, i, j, word):
+                    if helper(board, mark_board, i, j, word, 0):
                         return True
         return False
 
