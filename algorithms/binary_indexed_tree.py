@@ -1,4 +1,4 @@
-class BinaryIndexedTree(object):
+ class BinaryIndexedTree(object):
     """
 
     """
@@ -29,6 +29,7 @@ class BinaryIndexedTree(object):
             res += self.tree[index]
             index -= index & -index
         return res
+
 
 
 
