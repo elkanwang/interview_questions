@@ -42,6 +42,6 @@ class Solution(object):
             res[index] *= right
             right *= nums[index]
         print res
-        
+
 sol = Solution()
 sol.productExceptSelf([1,2,3,4])
